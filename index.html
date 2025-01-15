@@ -1,227 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yizz</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/bcb96cfddf.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/favicon.ico">
+    <script>
+      // Prompt for password before accessing the content
+      function checkPassword() {
+        const password = prompt("Please enter the password:");
+        if (password === "1103") {
+          document.getElementById("protected-content").style.display = "block";
+        } else {
+          alert("Incorrect password!");
+          document.getElementById("protected-content").style.display = "none";
+        }
+      }
+    </script>
+    <script
+      src="https://kit.fontawesome.com/bcb96cfddf.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/favicon.ico" />
+    <style>
+      body {
+        font-family: "Kumbh Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        color: #333;
+        overflow-x: hidden;
+      }
 
-</head>
+      .navbar {
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
 
-<body>
-    <!-- Navbar section -->
-    <article>
-        <nav class="navbar">
-            <div class="navbar__container">
-                <ul class="navbar__menu">
-                    <li class="navbar__item">
-                        <a href="index.html" class="navbar__links">
-                            Home
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="#about-section" class="navbar__links">
-                            About
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="#projects-section" class="navbar__links">
-                            Tiktoks
-                        </a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="#experience-section" class="navbar__links">
-                            Experience
-                        </a>
-                </ul>
-            </div>
-        </nav>
-    </article>
-    
+      .navbar__menu {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        margin: 0;
+      }
 
-    <!-- Main Section -->
-    <div class="main">
+      .navbar__item {
+        list-style: none;
+        margin: 0 15px;
+      }
+
+      .navbar__links {
+        text-decoration: none;
+        color: #ff6f61;
+        font-size: 18px;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .navbar__links:hover {
+        color: #333;
+      }
+
+      .main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+      }
+
+      .main__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .main__img--container img {
+        border-radius: 50%;
+        border: 5px solid #ff6f61;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        width: 150px;
+        height: 150px;
+      }
+
+      .main__content h1 {
+        font-family: "Lobster", cursive;
+        font-size: 2.5em;
+        color: #ff6f61;
+      }
+
+      .about {
+        background: white;
+        padding: 50px 20px;
+        border-radius: 25px 25px 0 0;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        margin-top: -50px;
+      }
+
+      .about-head {
+        font-size: 2em;
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      .about__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .who__container,
+      .currently__container,
+      .interests__container,
+      .reads__container {
+        background: #ffeadb;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        font-family: "Lobster", cursive;
+        color: #ff6f61;
+      }
+
+      .projects {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .projects-head {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .projects__container {
+        padding: 0 20px;
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+      }
+
+      .projects__item {
+        display: inline-block;
+        width: 200px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .projects__item img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .projects__item:hover {
+        transform: scale(1.1);
+      }
+
+      .experience {
+        text-align: center;
+      }
+
+      .experience-head {
+        font-size: 2em;
+        margin-bottom: 30px;
+        color: #333;
+      }
+
+      .experience__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .experience__inner-card {
+        text-align: center;
+        background: #ffeadb;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 600px;
+      }
+
+      .footer__container {
+        background: #ff6f61;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .footer__container a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer__container a:hover {
+        text-decoration: underline;
+      }
+
+      .trips {
+        padding: 50px 20px;
+        background: white;
+        text-align: center;
+      }
+
+      .trips__head {
+        font-size: 2em;
+        margin-bottom: 30px;
+        color: #ff6f61;
+      }
+
+      .trips__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .trip__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+        background: #ffeadb;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 500px;
+      }
+
+      .trip__item img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      #protected-content {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body onload="checkPassword()">
+    <!-- Protected Content -->
+    <div id="protected-content">
+      <!-- Navbar section -->
+      <nav class="navbar">
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="index.html" class="navbar__links">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="#about-section" class="navbar__links">About</a>
+          </li>
+          <li class="navbar__item">
+            <a href="#projects-section" class="navbar__links">Tiktoks</a>
+          </li>
+          <li class="navbar__item">
+            <a href="#trips-section" class="navbar__links">Trips</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Section -->
+      <div class="main">
         <div class="main__container">
-            <div class="main__img--container">
-                <img src="images/IMG_4664-modified.png" alt="pic" id="main__img">
-            </div>
-            <div class="main__content">
-                    <h1>Hi, I'm Erin!</h1>
-                    <h2>I am the best clash player at Cornell</span></h2>
-                    <p>My favorite duos partner is nubish</p>
-            </div>
+          <div class="main__img--container">
+            <img src="images/IMG_4664-modified.png" alt="pic" />
+          </div>
+          <div class="main__content">
+            <h1>Hi, I'm Erin!</h1>
+            <h2>I am the best clash player at Cornell</h2>
+            <p>My favorite duos partner is nubish</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-
-
-    <!-- About Me Section -->
-    <div class="about" id="about-section">
+      <!-- About Me Section -->
+      <div class="about" id="about-section">
         <h1 class="about-head">About Me</h1>
         <div class="about__container">
-            <div class="who__container">
-                <div class="who-header">
-                    <h2>About me:</h2>
-                </div>
-                <div class="who-desc">
-                    <p><i class="fa-solid fa-arrow-right"></i> Student at Cornell University from Buffalo, NY</p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Major: Industrial and Labor Relations</p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Passionate about solving the worlds problems through consulting</p>
-                </div>
-            </div>
-            <div class="currently__container">
-                <div class="currently-header">
-                    <h2>Currently:</h2>
-                </div>
-                <div class="currently-desc">
-                    <p><i class="fa-solid fa-arrow-right"></i> Girlfriend of Mateo </p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Prettiest girl in the world </p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Wit a phatty &#127825;</p>
-                </div>
-            </div>
-            <div class="interests__container">
-                <div class="interests-header">
-                    <h2>My Interests:</h2>
-                </div>
-                <div class="interests-desc">
-                    <p><i class="fa-solid fa-arrow-right"></i> Clash and Piz</p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Lattes</p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Classical music</p>
-                    <p><i class="fa-solid fa-arrow-right"></i> MY BOYFRIEND</p>
-                </div>
-            </div>
-            <div class="reads__container">
-                <div class="reads-header">
-                    <h2>My Favorite Snacks:</h2>
-                </div>
-                <div class="reads-desc">
-                    <p><i class="fa-solid fa-arrow-right"></i> Hersheys Kisses</p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Oreos</p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Sour Patch Kids Tropical Edition</p>
-                </div>
-            </div>
+          <div class="who__container">
+            <h2>About me:</h2>
+            <p>
+              <i class="fa-solid fa-arrow-right"></i> Student at Cornell
+              University from Buffalo, NY
+            </p>
+            <p>
+              <i class="fa-solid fa-arrow-right"></i> Major: Industrial and
+              Labor Relations
+            </p>
+            <p>
+              <i class="fa-solid fa-arrow-right"></i> Passionate about applying
+              my genius through strategy
+            </p>
+          </div>
+          <div class="currently__container">
+            <h2>Currently:</h2>
+            <p><i class="fa-solid fa-arrow-right"></i> Girlfriend of Mateo</p>
+            <p>
+              <i class="fa-solid fa-arrow-right"></i> Prettiest girl in the
+              world
+            </p>
+            <p>
+              <i class="fa-solid fa-arrow-right"></i> About to graduate and live
+              in New York then Cali
+            </p>
+          </div>
+          <div class="interests__container">
+            <h2>My Interests:</h2>
+            <p><i class="fa-solid fa-arrow-right"></i> Clash and Piz</p>
+            <p><i class="fa-solid fa-arrow-right"></i> Lattes</p>
+            <p><i class="fa-solid fa-arrow-right"></i> Classical music</p>
+            <p><i class="fa-solid fa-arrow-right"></i> MY BOYFRIEND</p>
+          </div>
+          <div class="reads__container">
+            <h2>My Favorite Snacks:</h2>
+            <p><i class="fa-solid fa-arrow-right"></i> Hersheys Kisses</p>
+            <p><i class="fa-solid fa-arrow-right"></i> Oreos</p>
+            <p>
+              <i class="fa-solid fa-arrow-right"></i> Sour Patch Kids Tropical
+              Edition
+            </p>
+          </div>
         </div>
-    </div>
-        
-<!-- Projects Section -->
-    <div class="projects" id="projects-section">
+      </div>
+
+      <!-- Projects Section -->
+      <div class="projects" id="projects-section">
         <h1 class="projects-head">Tiktoks</h1>
         <div class="projects__container">
-            <div class="projects_cards">
-
-                <a href="https://www.tiktok.com/@chickpeeeaaaasss/video/7096864290841414958?lang=en" class="projects__item">
-                  <img src="images/clash.png" alt="" class="projects__img">
-                </a>
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                <a href="https://www.tiktok.com/@chickpeeeaaaasss/video/7295213510387191082?lang=en" class="projects__item">
-                    <img src="images/halloween.png" alt="" class="projects__img">
-                </a>
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                <a href="https://www.tiktok.com/@chickpeeeaaaasss/video/7248803817104411946?lang=en" class="projects__item">
-                    <img src="images/chicago.png" alt="" class="projects__img">
-                </a>
-            </div>
+          <a
+            href="https://www.tiktok.com/@chickpeeeaaaasss/video/7096864290841414958?lang=en"
+            class="projects__item"
+          >
+            <img src="images/clash.png" alt="Clash TikTok" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@chickpeeeaaaasss/video/7295213510387191082?lang=en"
+            class="projects__item"
+          >
+            <img src="images/halloween.png" alt="Halloween TikTok" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@chickpeeeaaaasss/video/7248803817104411946?lang=en"
+            class="projects__item"
+          >
+            <img src="images/chicago.png" alt="Chicago TikTok" />
+          </a>
         </div>
+      </div>
 
-
-    </div>
-
-    <!-- Experiences Section -->
-    <div class="experience" id="experience-section">
-        <h1 class="experience-head">Experience</h1>
-        <div class="experience__container">
-            <div class="experience__cards">
-                <div class="experience__inner-card active" data-id="experience__content1">
-                    <h2 class="experience-name">Consulting @ McMillanDoolittle</h2>
-                </div>
-                <div class="experience__inner-card" data-id="experience__content2">
-                    <h2 class="experience-name">Cornell Consulting Group</h2>
-                </div> 
-                <div class="experience__inner-card" data-id="experience__content3">
-                    <h2 class="experience-name">Phi Gamma Nu</h2>
-                </div>
-            </div>
-            
-            <div class="experience__content">
-                <div class="experience__inner-content active" id="experience__content1">
-                    <div>
-                        <div class="experience__text">
-                            <p class="experience-header">Consulting Summer Analyst</p>
-                            <p class="experience-desc">
-                                Gained experience in the retail industry by working with clients and making hella powerpoints.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="experience__inner-content" id="experience__content2">
-                    <div>
-                        <div class="experience__text">
-                            <p class="experience-header">Consulting Analyst</p>
-                            <p class="experience-desc">
-                                Part of the most elite cconsulting club at Cornell
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="experience__inner-content" id="experience__content3">
-                    <div>
-                        <div class="experience__text">
-                            <p class="experience-header">Consulting Summer Analyst</p>
-                            <p class="experience-desc">
-                                Head of recruitment for a business fraternity on campus
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>  
+      <!-- Trips Section -->
+      <div class="trips" id="trips-section">
+        <h1 class="trips__head">Trips</h1>
+        <div class="trips__container">
+          <div class="trip__item">
+            <h2>Chicago - July 2023</h2>
+            <img src="images/chicago_trip.jpg" alt="Chicago Trip" />
+            <p>
+              First time visiting my baby! Loved our dinner at the Signature
+              Room and the rainy beach.
+            </p>
+          </div>
+          <div class="trip__item">
+            <h2>Canada - May 2024</h2>
+            <img src="images/canada_trip.jpg" alt="Canada Trip" />
+            <p>
+              Our first getaway and the most amazing time with my girl.
+              Technically our first international trip (no pics but this was
+              same week).
+            </p>
+          </div>
+          <div class="trip__item">
+            <h2>Menlo Park - January 2025</h2>
+            <img src="images/menlo_park.png" alt="Menlo Park Trip" />
+            <p>
+              The first time my baby visited me and fell in love with the place
+              where I grew up. Such good memories (incoming).
+            </p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Footer Section -->
-    <div class="footer__container">
-        <a class="copyright">Erin Suh    <i class="fa-regular fa-copyright"></i>   2025</a>
-        <div class="social__media">
-            <div class="social__media--wrap">
-                <div style="width:250px; margin:0 auto;" class="social__icons">
-                    <a href="mailto: eys34@cornell.com" class="social__icon--link" target="_blank">
-                        <i class="fa-solid fa-envelope"></i>
-                    <a href="https://www.linkedin.com/in/erin-suh" class="social__icon--link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://www.instagram.com/erinnsuh/" class="social__icon--link" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://twitter.com/erin_suh7" class="social__icon--link" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>    
-                </div>
-            </div>
+      <!-- Footer Section -->
+      <footer class="footer__container">
+        <p>Erin Suh <i class="fa-regular fa-copyright"></i> 2025</p>
+        <div>
+          <a href="mailto:eys34@cornell.com">Email</a> |
+          <a href="https://www.linkedin.com/in/erin-suh">LinkedIn</a> |
+          <a href="https://www.instagram.com/erinnsuh/">Instagram</a> |
+          <a href="https://twitter.com/erin_suh7">Twitter</a>
         </div>
+      </footer>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="app.js"></script>
-</body>
+  </body>
 </html>
