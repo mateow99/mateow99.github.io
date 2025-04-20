@@ -4,408 +4,491 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yizz</title>
-    <script>
-      // Prompt for password before accessing the content
-      function checkPassword() {
-        const password = prompt("Please enter the password:");
-        if (password === "1103") {
-          document.getElementById("protected-content").style.display = "block";
-        } else {
-          alert("Incorrect password!");
-          document.getElementById("protected-content").style.display = "none";
-        }
-      }
-    </script>
+    <title>Mateo Weiner - Software Engineer</title>
+
+    <!-- Icons & Font -->
     <script
-      src="https://kit.fontawesome.com/bcb96cfddf.js"
+      src="https://kit.fontawesome.com/3f5ec6d6b5.js"
       crossorigin="anonymous"
+      defer
     ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Lobster&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="images/favicon.ico" />
+
+    <!-- =========  ALL  STYLES  HERE  ========= -->
     <style>
-      body {
-        font-family: "Kumbh Sans", sans-serif;
+      /* -------  RESET & BASE  ------- */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      }
+      body {
+        font-family: "Kumbh Sans", sans-serif;
+        line-height: 1.6;
         color: #333;
-        overflow-x: hidden;
+        background: #fff;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3 {
+        font-weight: 700;
+        line-height: 1.25;
+        color: #111;
+      }
+      section {
+        padding: 4rem 1rem;
+      }
+      .container {
+        max-width: 1100px;
+        margin-inline: auto;
       }
 
-      .navbar {
-        background: rgba(255, 255, 255, 0.8);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* -------  NAVBAR  ------- */
+      header {
         position: sticky;
         top: 0;
-        z-index: 1000;
+        z-index: 100;
+        background: #ffffffe6;
+        border-bottom: 1px solid #e5e7eb;
+        backdrop-filter: blur(6px);
       }
-
-      .navbar__menu {
+      nav {
         display: flex;
-        justify-content: center;
-        padding: 10px 0;
-        margin: 0;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        font-weight: 600;
       }
-
-      .navbar__item {
+      nav ul {
+        display: flex;
+        gap: 2rem;
         list-style: none;
-        margin: 0 15px;
+        font-size: 0.9rem;
+      }
+      nav a:hover {
+        color: #6366f1;
       }
 
-      .navbar__links {
-        text-decoration: none;
-        color: #ff6f61;
-        font-size: 18px;
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-
-      .navbar__links:hover {
-        color: #333;
-      }
-
-      .main {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        text-align: center;
-      }
-
-      .main__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .main__img--container img {
-        border-radius: 50%;
-        border: 5px solid #ff6f61;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        width: 150px;
-        height: 150px;
-      }
-
-      .main__content h1 {
-        font-family: "Lobster", cursive;
-        font-size: 2.5em;
-        color: #ff6f61;
-      }
-
-      .about {
-        background: white;
-        padding: 50px 20px;
-        border-radius: 25px 25px 0 0;
-        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-        margin-top: -50px;
-      }
-
-      .about-head {
-        font-size: 2em;
-        margin-bottom: 30px;
-        color: #333;
-      }
-
-      .about__container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-
-      .who__container,
-      .currently__container,
-      .interests__container,
-      .reads__container {
-        background: #ffeadb;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      h2 {
-        font-family: "Lobster", cursive;
-        color: #ff6f61;
-      }
-
-      .projects {
-        text-align: center;
-        margin-bottom: 50px;
-      }
-
-      .projects-head {
-        font-size: 2em;
-        margin-bottom: 20px;
-        color: #333;
-      }
-
-      .projects__container {
-        padding: 0 20px;
-        display: flex;
-        gap: 30px;
-        justify-content: center;
-      }
-
-      .projects__item {
+      /* -------  BUTTONS  ------- */
+      .btn {
         display: inline-block;
-        width: 200px;
-        transition: transform 0.3s, box-shadow 0.3s;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.375rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: 0.2s;
+      }
+      .btn-primary {
+        background: #6366f1;
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: #4f46e5;
+      }
+      .btn-outline {
+        border: 1px solid #6366f1;
+        color: #6366f1;
+      }
+      .btn-outline:hover {
+        background: #eef2ff;
       }
 
-      .projects__item img {
+      /* -------  HERO  ------- */
+      .hero {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2rem;
+      }
+      .hero img {
+        border-radius: 0.5rem;
+        background: #e5e7eb;
+        height: 240px;
+        object-fit: cover;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        margin-bottom: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .hero {
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+
+      /* -------  EXPERIENCE  ------- */
+      .cards {
+        display: grid;
+        gap: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      }
+      .card i {
+        color: #6366f1;
+        margin-right: 0.5rem;
+      }
+
+      /* -------  PROJECTS  ------- */
+      .project {
+        border: 1px solid #e5e7eb;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      }
+      .project figcaption {
+        padding: 1.25rem;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        font-size: 0.75rem;
+      }
+      .tag {
+        background: #f3f4f6;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+      }
+
+      /* -------  ABOUT  ------- */
+      .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+      .about-grid img {
+        border-radius: 0.75rem;
+        width: 260px;
+        height: 260px;
+        object-fit: cover;
+      }
+      @media (min-width: 768px) {
+        .about-grid {
+          flex-direction: row;
+        }
+      }
+
+      /* -------  CONTACT  ------- */
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 520px;
       }
-
-      .projects__item:hover {
-        transform: scale(1.1);
-      }
-
-      .experience {
-        text-align: center;
-      }
-
-      .experience-head {
-        font-size: 2em;
-        margin-bottom: 30px;
-        color: #333;
-      }
-
-      .experience__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .experience__inner-card {
-        text-align: center;
-        background: #ffeadb;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        max-width: 600px;
-      }
-
-      .footer__container {
-        background: #ff6f61;
-        color: white;
-        text-align: center;
-        padding: 20px;
-      }
-
-      .footer__container a {
-        color: white;
-        text-decoration: none;
-      }
-
-      .footer__container a:hover {
-        text-decoration: underline;
-      }
-
-      .trips {
-        padding: 50px 20px;
-        background: white;
-        text-align: center;
-      }
-
-      .trips__head {
-        font-size: 2em;
-        margin-bottom: 30px;
-        color: #ff6f61;
-      }
-
-      .trips__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-      }
-
-      .trip__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 20px;
-        background: #ffeadb;
-        border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        max-width: 500px;
-      }
-
-      .trip__item img {
+      input,
+      textarea {
         width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 0.75rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font: inherit;
       }
-      #protected-content {
-        display: none;
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px #c7d2fe;
+      }
+      textarea {
+        resize: none;
+      }
+
+      /* -------  FOOTER  ------- */
+      footer {
+        background: #111;
+        color: #d1d5db;
+        font-size: 0.875rem;
+      }
+      .footer-grid {
+        display: grid;
+        gap: 2rem;
+        padding: 3rem 1rem;
+      }
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      footer h4 {
+        color: #fff;
+        font-size: 0.95rem;
+        margin-bottom: 0.75rem;
+      }
+      footer ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .social a {
+        font-size: 1.1rem;
+        margin-right: 0.75rem;
+      }
+      .credit {
+        border-top: 1px solid #1f2937;
+        text-align: center;
+        padding: 1rem;
       }
     </style>
   </head>
-
-  <body onload="checkPassword()">
-    <!-- Protected Content -->
-    <div id="protected-content">
-      <!-- Navbar section -->
-      <nav class="navbar">
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a href="index.html" class="navbar__links">Home</a>
-          </li>
-          <li class="navbar__item">
-            <a href="#about-section" class="navbar__links">About</a>
-          </li>
-          <li class="navbar__item">
-            <a href="#projects-section" class="navbar__links">Tiktoks</a>
-          </li>
-          <li class="navbar__item">
-            <a href="#trips-section" class="navbar__links">Trips</a>
-          </li>
+  <body>
+    <!-- ======================= NAVBAR ======================= -->
+    <header>
+      <nav class="container">
+        <a href="#top">&lt;/&gt;&nbsp;Mateo Weiner</a>
+        <ul>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+    </header>
 
-      <!-- Main Section -->
-      <div class="main">
-        <div class="main__container">
-          <div class="main__img--container">
-            <img src="images/IMG_4664-modified.png" alt="pic" />
-          </div>
-          <div class="main__content">
-            <h1>Hi, I'm Erin!</h1>
-            <h2>I am the best clash player at Cornell</h2>
-            <p>My favorite duos partner is nubish</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- About Me Section -->
-      <div class="about" id="about-section">
-        <h1 class="about-head">About Me</h1>
-        <div class="about__container">
-          <div class="who__container">
-            <h2>About me:</h2>
-            <p>
-              <i class="fa-solid fa-arrow-right"></i> Student at Cornell
-              University from Buffalo, NY
-            </p>
-            <p>
-              <i class="fa-solid fa-arrow-right"></i> Major: Industrial and
-              Labor Relations
-            </p>
-            <p>
-              <i class="fa-solid fa-arrow-right"></i> Passionate about applying
-              my genius through strategy
-            </p>
-          </div>
-          <div class="currently__container">
-            <h2>Currently:</h2>
-            <p><i class="fa-solid fa-arrow-right"></i> Girlfriend of Mateo</p>
-            <p>
-              <i class="fa-solid fa-arrow-right"></i> Prettiest girl in the
-              world
-            </p>
-            <p>
-              <i class="fa-solid fa-arrow-right"></i> About to graduate and live
-              in New York then Cali
-            </p>
-          </div>
-          <div class="interests__container">
-            <h2>My Interests:</h2>
-            <p><i class="fa-solid fa-arrow-right"></i> Clash and Piz</p>
-            <p><i class="fa-solid fa-arrow-right"></i> Lattes</p>
-            <p><i class="fa-solid fa-arrow-right"></i> Classical music</p>
-            <p><i class="fa-solid fa-arrow-right"></i> MY BOYFRIEND</p>
-          </div>
-          <div class="reads__container">
-            <h2>My Favorite Snacks:</h2>
-            <p><i class="fa-solid fa-arrow-right"></i> Hersheys Kisses</p>
-            <p><i class="fa-solid fa-arrow-right"></i> Oreos</p>
-            <p>
-              <i class="fa-solid fa-arrow-right"></i> Sour Patch Kids Tropical
-              Edition
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Projects Section -->
-      <div class="projects" id="projects-section">
-        <h1 class="projects-head">Tiktoks</h1>
-        <div class="projects__container">
-          <a
-            href="https://www.tiktok.com/@chickpeeeaaaasss/video/7096864290841414958?lang=en"
-            class="projects__item"
-          >
-            <img src="images/clash.png" alt="Clash TikTok" />
-          </a>
-          <a
-            href="https://www.tiktok.com/@chickpeeeaaaasss/video/7295213510387191082?lang=en"
-            class="projects__item"
-          >
-            <img src="images/halloween.png" alt="Halloween TikTok" />
-          </a>
-          <a
-            href="https://www.tiktok.com/@chickpeeeaaaasss/video/7248803817104411946?lang=en"
-            class="projects__item"
-          >
-            <img src="images/chicago.png" alt="Chicago TikTok" />
-          </a>
-        </div>
-      </div>
-
-      <!-- Trips Section -->
-      <div class="trips" id="trips-section">
-        <h1 class="trips__head">Trips</h1>
-        <div class="trips__container">
-          <div class="trip__item">
-            <h2>Chicago - July 2023</h2>
-            <img src="images/chicago_trip.jpg" alt="Chicago Trip" />
-            <p>
-              First time visiting my baby! Loved our dinner at the Signature
-              Room and the rainy beach.
-            </p>
-          </div>
-          <div class="trip__item">
-            <h2>Canada - May 2024</h2>
-            <img src="images/canada_trip.jpg" alt="Canada Trip" />
-            <p>
-              Our first getaway and the most amazing time with my girl.
-              Technically our first international trip (no pics but this was
-              same week).
-            </p>
-          </div>
-          <div class="trip__item">
-            <h2>Menlo Park - January 2025</h2>
-            <img src="images/menlo_park.png" alt="Menlo Park Trip" />
-            <p>
-              The first time my baby visited me and fell in love with the place
-              where I grew up. Such good memories (incoming).
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer Section -->
-      <footer class="footer__container">
-        <p>Erin Suh <i class="fa-regular fa-copyright"></i> 2025</p>
+    <main id="top">
+      <!-- ======================= HERO ========================= -->
+      <section class="container hero">
+        <img src="mateo_images/main_headshot.jpg" alt="headshot" />
         <div>
-          <a href="mailto:eys34@cornell.com">Email</a> |
-          <a href="https://www.linkedin.com/in/erin-suh">LinkedIn</a> |
-          <a href="https://www.instagram.com/erinnsuh/">Instagram</a> |
-          <a href="https://twitter.com/erin_suh7">Twitter</a>
+          <h1>Software Engineer</h1>
+          <p>
+            Crafting full-stack systems that make a difference. Specialized in
+            backend, machine-learning agents, and data analysis with Python.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+            <a href="Mateo_Weiner_Resume.pdf" download class="btn btn-outline">
+              <i class="fa-solid fa-file-arrow-down"></i>&nbsp;Resume
+            </a>
+          </div>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <!-- ===================== EXPERIENCE ===================== -->
+      <section id="experience" class="container">
+        <h2 style="margin-bottom: 2rem; font-size: 1.75rem">Experience</h2>
+
+        <div class="cards">
+          <article class="card">
+            <h3>
+              <i class="fa-solid fa-laptop-code"></i>Software Engineering Intern
+            </h3>
+            <p style="font-size: 0.9rem; color: #6b7280">
+              Google DeepMind • Aug-Nov 2024
+            </p>
+            <p style="margin-top: 0.75rem">
+              Trained a web-browsing multimodal GenAI agent, leveraging Python
+              data-analysis pipelines to measure success.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>
+              <i class="fa-solid fa-database"></i>Software Engineering Intern
+            </h3>
+            <p style="font-size: 0.9rem; color: #6b7280">
+              Netflix • May-Aug 2024
+            </p>
+            <p style="margin-top: 0.75rem">
+              Designed a Java transpiler from ontological models to relational
+              schemas, unifying data as a platform solution.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>
+              <i class="fa-solid fa-tools"></i>Software Engineering Intern
+            </h3>
+            <p style="font-size: 0.9rem; color: #6b7280">
+              Amazon • May-Aug 2023
+            </p>
+            <p style="margin-top: 0.75rem">
+              Improved developer experience by reducing test set-up spoofing
+              conditions by up to 25x.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== PROJECTS ======================= -->
+      <section id="projects" class="container">
+        <h2 style="margin-bottom: 2rem; font-size: 1.75rem">
+          Featured Projects
+        </h2>
+
+        <div class="cards">
+          <figure class="project">
+            <img src="mateo_images/project1.png" alt="" />
+            <figcaption>
+              <h3>Recess</h3>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem">
+                Modern social-sports app (React Native, Django, Postgres).
+              </p>
+              <div class="tags">
+                <span class="tag">React Native</span
+                ><span class="tag">Django</span
+                ><span class="tag">Postgres</span>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="project">
+            <img src="mateo_images/project2.png" alt="" />
+            <figcaption>
+              <h3>Eatery Blue</h3>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem">
+                Dining-hall info for 10k+ users (Swift, Django, Postgres).
+              </p>
+              <div class="tags">
+                <span class="tag">Swift</span><span class="tag">Django</span
+                ><span class="tag">Postgres</span>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="project">
+            <img src="mateo_images/project3.png" alt="" />
+            <figcaption>
+              <h3>Resell</h3>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem">
+                Campus marketplace (React Native, Express, TypeScript).
+              </p>
+              <div class="tags">
+                <span class="tag">React Native</span
+                ><span class="tag">Express</span
+                ><span class="tag">TypeScript</span>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ======================= ABOUT ======================= -->
+      <section id="about" class="container">
+        <div class="about-grid">
+          <div>
+            <h2 style="font-size: 1.75rem; margin-bottom: 1rem">About Me</h2>
+            <p>
+              I'm a passionate developer with years of experience creating
+              digital solutions. I love the thrill of working on high stakes
+              project. When I'm not at my computer you can catch me playing
+              soccer, tennis, or pickleball and if it is winter then I'll be on
+              the slopes skiing or snowboarding. I'll always enjoy excursions
+              with friends and a collaborative work envirnment.
+            </p>
+            <div class="social" style="margin-top: 1.25rem">
+              <a href="https://github.com/mateow99" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/mateoweiner/" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+              <a href="https://twitter.com/" target="_blank"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+          <img src="mateo_images/avatar.png" alt="alternative_headshot" />
+        </div>
+      </section>
+
+      <!-- ===================== CONTACT ======================= -->
+      <section id="contact" class="container" style="text-align: center">
+        <h2 style="font-size: 1.75rem; margin-bottom: 2rem">Get in Touch</h2>
+        <form
+          action="https://formspree.io/f/yourFormID"
+          method="POST"
+          style="margin-inline: auto"
+        >
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="_replyto" placeholder="Email" required />
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Message"
+            required
+          ></textarea>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- ======================= FOOTER ====================== -->
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h4>&lt;/&gt; Mateo Weiner</h4>
+          <p>Creating digital experiences that matter.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Social</h4>
+          <ul>
+            <li>
+              <a href="https://github.com/mateow99" target="_blank">GitHub</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/mateoweiner/" target="_blank"
+                >LinkedIn</a
+              >
+            </li>
+            <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:mateow99@gmail.com">mateow99@gmail.com</a></li>
+            <li>Menlo Park, CA</li>
+            <li>
+              <a href="Mateo_Weiner_Resume.pdf" download
+                ><i class="fa-solid fa-file-pdf"></i> Download Resume</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="credit">© 2025 Mateo Weiner. All rights reserved.</p>
+    </footer>
   </body>
 </html>
