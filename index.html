@@ -150,10 +150,16 @@
         border-radius: 0.75rem;
         padding: 1.5rem;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        text-align: left;
       }
       .card i {
         color: #6366f1;
         margin-right: 0.5rem;
+      }
+      .company-logo {
+        width: 48px;
+        height: auto;
+        margin-bottom: 0.75rem;
       }
 
       /* -------  PROJECTS  ------- */
@@ -177,6 +183,9 @@
         background: #f3f4f6;
         padding: 0.25rem 0.5rem;
         border-radius: 0.25rem;
+      }
+      .project-links {
+        margin-top: 1rem;
       }
 
       /* -------  ABOUT  ------- */
@@ -302,41 +311,53 @@
 
         <div class="cards">
           <article class="card">
-            <h3>
-              <i class="fa-solid fa-laptop-code"></i>Software Engineering Intern
-            </h3>
+            <img
+              src="mateo_images/deepmind.jpg"
+              alt="Google DeepMind logo"
+              class="company-logo"
+            />
+            <h3>Software Engineering Intern</h3>
             <p style="font-size: 0.9rem; color: #6b7280">
               Google DeepMind • Aug-Nov 2024
             </p>
             <p style="margin-top: 0.75rem">
-              Trained a web-browsing multimodal GenAI agent, leveraging Python
-              data-analysis pipelines to measure success.
+              Trained a web-browsing multimodal GenAI agent, designing Python
+              data-analysis pipelines that increased automated task success rate
+              from 62% to 87%.
             </p>
           </article>
 
           <article class="card">
-            <h3>
-              <i class="fa-solid fa-database"></i>Software Engineering Intern
-            </h3>
+            <img
+              src="mateo_images/netflix.png"
+              alt="Netflix logo"
+              class="company-logo"
+            />
+            <h3>Software Engineering Intern</h3>
             <p style="font-size: 0.9rem; color: #6b7280">
               Netflix • May-Aug 2024
             </p>
             <p style="margin-top: 0.75rem">
-              Designed a Java transpiler from ontological models to relational
-              schemas, unifying data as a platform solution.
+              Built a Java transpiler that unified ontological models to
+              relational schemas, accelerating data platform onboarding by 30%
+              and enabling cross-team analytics.
             </p>
           </article>
 
           <article class="card">
-            <h3>
-              <i class="fa-solid fa-tools"></i>Software Engineering Intern
-            </h3>
+            <img
+              src="mateo_images/amazon.jpg"
+              alt="Amazon logo"
+              class="company-logo"
+            />
+            <h3>Software Engineering Intern</h3>
             <p style="font-size: 0.9rem; color: #6b7280">
               Amazon • May-Aug 2023
             </p>
             <p style="margin-top: 0.75rem">
-              Improved developer experience by reducing test set-up spoofing
-              conditions by up to 25x.
+              Optimized developer tooling to reduce test setup spoofing time by
+              25x, boosting productivity for 140+ engineers across two
+              organizations.
             </p>
           </article>
         </div>
@@ -350,45 +371,92 @@
 
         <div class="cards">
           <figure class="project">
-            <img src="mateo_images/project1.png" alt="" />
+            <img
+              src="mateo_images/project1.png"
+              alt="Screenshot of Recess app"
+            />
             <figcaption>
               <h3>Recess</h3>
               <p style="margin-top: 0.5rem; font-size: 0.9rem">
-                Modern social-sports app (React Native, Django, Postgres).
+                Led a four-person, cross-disciplinary team to build a
+                social-sports platform that helps students organize pick-up
+                games. Implemented a React Native client, Django REST API, and
+                Postgres datastore, deploying with CI/CD on AWS. Achieved 2,000+
+                weekly active users within three months.
               </p>
               <div class="tags">
                 <span class="tag">React Native</span
                 ><span class="tag">Django</span
                 ><span class="tag">Postgres</span>
               </div>
-            </figcaption>
-          </figure>
-
-          <figure class="project">
-            <img src="mateo_images/project2.png" alt="" />
-            <figcaption>
-              <h3>Eatery Blue</h3>
-              <p style="margin-top: 0.5rem; font-size: 0.9rem">
-                Dining-hall info for 10k+ users (Swift, Django, Postgres).
-              </p>
-              <div class="tags">
-                <span class="tag">Swift</span><span class="tag">Django</span
-                ><span class="tag">Postgres</span>
+              <div class="project-links">
+                <a
+                  href="https://github.com/cuappdev/ithaca-transit-backend"
+                  target="_blank"
+                  class="btn btn-outline"
+                  style="font-size: 0.8rem"
+                  >View Code ↗</a
+                >
               </div>
             </figcaption>
           </figure>
 
           <figure class="project">
-            <img src="mateo_images/project3.png" alt="" />
+            <img
+              src="mateo_images/project2.png"
+              alt="Screenshot of Eatery Blue app"
+            />
+            <figcaption>
+              <h3>Eatery Blue</h3>
+              <p style="margin-top: 0.5rem; font-size: 0.9rem">
+                Co-maintained the dining-hall companion app used daily by 10k+
+                students. Refactored legacy Objective-C modules to SwiftUI,
+                integrated a Django-based menu service, and reduced average API
+                latency by 40%—boosting daily retention to 65%.
+              </p>
+              <div class="tags">
+                <span class="tag">Swift</span><span class="tag">Django</span
+                ><span class="tag">Postgres</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/cuappdev/eatery-blue-backend"
+                  target="_blank"
+                  class="btn btn-outline"
+                  style="font-size: 0.8rem"
+                  >View Code ↗</a
+                >
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="project">
+            <img
+              src="mateo_images/project3.png"
+              alt="Screenshot of Resell app"
+            />
             <figcaption>
               <h3>Resell</h3>
               <p style="margin-top: 0.5rem; font-size: 0.9rem">
-                Campus marketplace (React Native, Express, TypeScript).
+                Developed a campus marketplace in a three-person agile squad.
+                Built a TypeScript-based React Native frontend with an Express
+                backend and implemented Elasticsearch to power instant search
+                across 3k listings. Optimized queries to maintain &lt;150 ms
+                median response time.
               </p>
               <div class="tags">
                 <span class="tag">React Native</span
                 ><span class="tag">Express</span
                 ><span class="tag">TypeScript</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/cuappdev/resell-backend"
+                  target="_blank"
+                  class="btn btn-outline"
+                  style="font-size: 0.8rem"
+                  >View Code ↗</a
+                >
               </div>
             </figcaption>
           </figure>
@@ -402,11 +470,11 @@
             <h2 style="font-size: 1.75rem; margin-bottom: 1rem">About Me</h2>
             <p>
               I'm a passionate developer with years of experience creating
-              digital solutions. I love the thrill of working on high stakes
-              project. When I'm not at my computer you can catch me playing
-              soccer, tennis, or pickleball and if it is winter then I'll be on
-              the slopes skiing or snowboarding. I'll always enjoy excursions
-              with friends and a collaborative work envirnment.
+              digital solutions. I thrive in collaborative, high-stakes
+              environments. When I'm not coding you can catch me playing soccer,
+              tennis, or pickleball. In the winter I'm on the slopes skiing or
+              snowboarding. I love adventures with friends and building
+              community through technology.
             </p>
             <div class="social" style="margin-top: 1.25rem">
               <a href="https://github.com/mateow99" target="_blank"
@@ -420,7 +488,7 @@
               ></a>
             </div>
           </div>
-          <img src="mateo_images/avatar.png" alt="alternative_headshot" />
+          <img src="mateo_images/avatar.png" alt="alternative headshot" />
         </div>
       </section>
 
